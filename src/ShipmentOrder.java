@@ -49,7 +49,6 @@ abstract class ShipmentOrder implements SummaryPrintable{
         price = applyBusinessDiscount(price);
 
         lastCalculatedPrice = price;
-        printProcessingResult();
     }
 
     public void validateOrder() {
