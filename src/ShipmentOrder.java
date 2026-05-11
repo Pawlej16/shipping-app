@@ -1,3 +1,4 @@
+import javax.imageio.spi.ImageTranscoderSpi;
 import java.lang.classfile.constantpool.DoubleEntry;
 import java.util.function.IntToDoubleFunction;
 
@@ -59,7 +60,7 @@ abstract class ShipmentOrder implements SummaryPrintable{
             throw new IllegalArgumentException("Order number cannot be empty!!");
         }
         if (distanceKm <= 0) {
-            throw new IllegalArgumentException("Distance must not be lower or equal to zero!")
+            throw new IllegalArgumentException("Distance must not be lower or equal to zero!");
         }
     }
 
@@ -73,12 +74,20 @@ abstract class ShipmentOrder implements SummaryPrintable{
         return price;
     }
 
+    private void printProcessingResult() {
+        System.out.println( "SUMMARY: " + orderNumber + " | " + customerName + " | " + "Type: " + getShipmentType() + " | Final price: " + getLastCalculatedPrice());
+    }
+
     public double applyBusinessDiscount(double price) {
         return price;
     }
 
     @Override
     String buildSummaryLine() {
-
+        return "SUMMARY: " + orderNumber + " | " + customerName + " | " + "Type: " + getShipmentType() + " | Final price: " + getLastCalculatedPrice();
     }
+
+    protected abstract double calculateBasePrice();
+    protected abstract double calculateAdditionalFee();
+    public abstract String getShipmentType();
 }
