@@ -1,12 +1,9 @@
-import javax.imageio.spi.ImageTranscoderSpi;
-import java.lang.classfile.constantpool.DoubleEntry;
-import java.util.function.IntToDoubleFunction;
 
 abstract class ShipmentOrder implements SummaryPrintable{
     private String orderNumber;
     private String customerName;
-    private double distanceKm;
-    private double baseFee;
+    public double distanceKm;
+    public double baseFee;
     private boolean insured;
     private double lastCalculatedPrice;
 
