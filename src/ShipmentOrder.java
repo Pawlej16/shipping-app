@@ -1,11 +1,11 @@
 
 abstract class ShipmentOrder implements SummaryPrintable{
-    private String orderNumber;
-    private String customerName;
+    public String orderNumber;
+    public String customerName;
     public double distanceKm;
     public double baseFee;
-    private boolean insured;
-    private double lastCalculatedPrice;
+    public boolean insured;
+    public double lastCalculatedPrice;
 
     public ShipmentOrder(String orderNumber, String customerName, double distanceKm, double baseFee, boolean insured) {
         this.orderNumber = orderNumber;
@@ -80,7 +80,7 @@ abstract class ShipmentOrder implements SummaryPrintable{
     }
 
     @Override
-    String buildSummaryLine() {
+    public String buildSummaryLine() {
         return "SUMMARY: " + orderNumber + " | " + customerName + " | " + "Type: " + getShipmentType() + " | Final price: " + getLastCalculatedPrice();
     }
 
